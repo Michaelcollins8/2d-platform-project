@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraFlollow : MonoBehaviour
+{
+    public Transform target;
+    public Vector3 cameraoffset;
+    [Range(1,10)]
+    public float smoothfactor;
+
+    private void FixedUpdate()
+    {
+        Follow();
+
+    }
+
+    void Follow()
+    {
+        Vector3 targetposition = target.position + cameraoffset;
+        Vector3 smoothPosition = Vector3.Lerp(transform.position, targetposition, smoothfactor * Time.fixedDeltaTime);
+        transform.position = smoothPosition;
+    }
+
+
+
+
+
+
+
+
+}
